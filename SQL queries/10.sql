@@ -1,0 +1,1 @@
+SELECT COUNT(*) AS [Items Invoice ID 37] FROM (SELECT * FROM InvoiceLine WHERE InvoiceId == '37')
