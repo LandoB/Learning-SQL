@@ -1,4 +1,4 @@
-SELECT Employee.FirstName, Employee.LastName, PRINTF(SUM(Invoice.Total)) AS "Total Sales" 
+SELECT Employee.FirstName, Employee.LastName, PRINTF("$%.2f", SUM(Invoice.Total)) AS "Total Sales" 
 FROM Invoice
 INNER JOIN Customer ON Invoice.CustomerId == Customer.CustomerId
 INNER JOIN Employee ON Customer.SupportRepId == Employee.EmployeeId
