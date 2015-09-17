@@ -1,4 +1,9 @@
-SELECT invoice.InvoiceId, invoice.CustomerId, invoice.InvoiceDate, invoice.BillingAddress, invoice.BillingCity, invoice.BillingState, invoice.BillingCountry, invoice.BillingPostalCode, invoice.Total
+SELECT "FirstName", "LastName", MAX("Total Sales") AS "HighestSalesIn2009" 
+FROM (
+SELECT Employee.FirstName AS "FirstName", Employee.LastName AS "LastName", PRINTF("$%.2f", SUM(Invoice.Total)) AS "Total Sales" 
 FROM Invoice
 INNER JOIN Customer ON Invoice.CustomerId == Customer.CustomerId
-WHERE Customer.Country == 'Brazil'
+INNER JOIN Employee ON Customer.SupportRepId == Employee.EmployeeId
+WHERE strftime('%Y', Invoice.InvoiceDate) == '2009'
+GROUP BY Employee.EmployeeId ORDER BY Employee.EmployeeId
+)
