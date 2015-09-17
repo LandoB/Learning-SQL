@@ -1,4 +1,5 @@
-SELECT invoice.InvoiceId, invoice.CustomerId, invoice.InvoiceDate, invoice.BillingAddress, invoice.BillingCity, invoice.BillingState, invoice.BillingCountry, invoice.BillingPostalCode, invoice.Total
+SELECT Employee.FirstName, Employee.LastName, PRINTF(SUM(Invoice.Total)) AS "Total Sales" 
 FROM Invoice
 INNER JOIN Customer ON Invoice.CustomerId == Customer.CustomerId
-WHERE Customer.Country == 'Brazil'
+INNER JOIN Employee ON Customer.SupportRepId == Employee.EmployeeId
+GROUP BY Employee.EmployeeId ORDER BY Employee.EmployeeId
