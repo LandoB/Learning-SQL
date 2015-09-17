@@ -1,2 +1,3 @@
-SELECT CustomerID, FirstName, LastName, Country  FROM Customer
-WHERE Country == 'Brazil'
+SELECT InvoiceId, Count(*) as "Number of Line Items" 
+FROM InvoiceLine 
+GROUP BY InvoiceId ORDER BY InvoiceId

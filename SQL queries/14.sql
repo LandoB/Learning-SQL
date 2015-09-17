@@ -1,1 +1,2 @@
-SELECT Customer.FirstName, Customer.LastName, Customer.Country, Invoice.InvoiceId, InvoiceDate, Invoice.BillingCountry FROM Customer INNER JOIN Invoice ON Customer.CustomerId == Invoice.CustomerId WHERE Customer.Country == 'Brazil' 
+SELECT BillingCountry, COUNT(*) AS "Number of Invoices" FROM Invoice
+GROUP BY BillingCountry ORDER BY "Number of Invoices" DESC
