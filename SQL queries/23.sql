@@ -1,1 +1,4 @@
-SELECT Customer.FirstName, Customer.LastName, Customer.Country, Invoice.InvoiceId, InvoiceDate, Invoice.BillingCountry FROM Customer INNER JOIN Invoice ON Customer.CustomerId == Invoice.CustomerId WHERE Customer.Country == 'Brazil' 
+SELECT BillingCountry, printf("$%.2f", SUM(Total)) AS "TotalSalesPerCountry"
+FROM Invoice
+GROUP BY BillingCountry
+ORDER BY SUM(Total) DESC
